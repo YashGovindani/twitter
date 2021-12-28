@@ -2,5 +2,12 @@
     "server" : {
         "host" : "localhost",
         "port" : 8080
+    },
+    "debugEnabled" : true,
+    "mysql" : {
+        "user" : "twitter_user",
+        "database" : "twitter_db",
+        "host" : "localhost",
+        "password" : "twitter"
     }
 }
