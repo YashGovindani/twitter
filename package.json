@@ -1,0 +1,22 @@
+{
+  "name": "twitter",
+  "version": "1.0.0",
+  "description": "Spenny Interview Assignment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YashGovindani/twitter.git"
+  },
+  "author": "Yash Govindani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YashGovindani/twitter/issues"
+  },
+  "homepage": "https://github.com/YashGovindani/twitter#readme",
+  "dependencies": {
+    "@hapi/hapi": "^20.2.1"
+  }
+}
