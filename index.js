@@ -7,6 +7,9 @@ const init = async () => {
     // creating server
     const server = Hapi.server(configs.server);
 
+    // adding routes
+    server.route(require('./routes/user'));
+
     // starting server
     await server.start();
     console.log('Server running on %s', server.info.uri);
