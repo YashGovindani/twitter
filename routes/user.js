@@ -10,5 +10,10 @@ module.exports = [
         method : 'POST',
         path : '/follow',
         handler : handlers.follow
+    },
+    {
+        method : 'POST',
+        path : '/loginByEmail',
+        handler : handlers.loginByEmail
     }
 ]

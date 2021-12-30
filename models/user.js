@@ -70,7 +70,7 @@ module.exports.getByEmail = async function(emailString)
             connection = await getConnection();
             response = await connection.execute('select * from user where email=?', [emailString]);
             await connection.close();
-            resolve(response);
+            resolve(response[0][0]);
         }catch(error){
             reject(error);
         }
@@ -85,7 +85,7 @@ module.exports.getByUsername = async function(username)
             connection = await getConnection();
             response = await connection.execute('select * from user where username=?', [username]);
             await connection.close();
-            resolve(response);
+            resolve(response[0][0]);
         }catch(error){
             reject(error);
         }

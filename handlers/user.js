@@ -27,9 +27,30 @@ module.exports.signUp = async function(request, h){
     }
 };
 
+module.exports.loginByEmail = async function(request, h){
+    try
+    {
+        let email = request.payload.email;
+        if(email == undefined || email.length <= 4 || email.indexOf('@') == -1) return Boom.badRequest("Invalid email");
+        if(await userModel.userExistsByEmail(email) == false) return Boom.badRequest("User does not exist with email : " + email);
+        let password = request.payload.password;
+        if(password == undefined || password.length < 8) return Boom.badRequest("Invalid password");
+        let userObject = await userModel.getByEmail(email);
+        require('../container.json')[userObject.user_id] = 1;
+        return {
+            status : true,
+            message : "logged in"
+        };
+    }catch(error){ 
+        console.log(error);
+        return Boom.badImplementation();
+    }
+};
+
 module.exports.follow = async function(request, h){
     try
     {
+        if(h.loginCheck(request, h) == false) return Boom.forbidden();
         let followerUserId = request.payload.followerUserId;
         if(followerUserId == undefined) return Boom.badRequest('Follower user id required');
         if(await userModel.userExistsByUserId(followerUserId) == false) return Boom.badRequest('Invalid follower user id');
